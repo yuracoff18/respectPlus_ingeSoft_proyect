@@ -1,0 +1,123 @@
+.game-ranks { display: flex; flex-direction: column; gap: 12px; }
+.game-rank-card { padding: 15px; border: 1px solid #49333e; border-radius: 7px; background: #21171d; min-width: 0; }
+.game-rank-heading { display: flex; align-items: center; gap: 9px; color: #d58a95; }
+.game-rank-heading strong { font-size: 13px; color: #eadce1; line-height: 1.5; }
+.rank-values { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; }
+.rank-values > span { display: flex; flex-direction: column; gap: 5px; color: #ae909f; font-size: 10px; }
+.rank-values strong { color: #e7bdc8; font-size: 14px; font-weight: 600; }
+.rank-queue, .rank-provider, .rank-updated, .rank-account { display: block; font-size: 10px; color: #a48a99; margin-top: 10px; overflow-wrap: anywhere; }
+.rank-provider { color: #c99ba9; }
+.rank-updated, .rank-account { font-size: 9px; margin-top: 5px; }
+.game-rank-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.game-rank-tags .tag { align-items: flex-start; font-size: 9px; gap: 6px; }
+.game-rank-tags .tag strong { color: #cfa9b6; font-weight: 500; }
+.game-rank-tags .tag svg { margin-top: 2px; }
+.roster-game-select { width: auto; max-width: 230px; font-size: 12px; margin-left: auto; }
+.competition-tag { color: #d2a4b3; }
+.account-settings { margin-top: 38px; padding: 30px; }
+.account-settings h2 { font-size: 30px; margin: 13px 0 17px; }
+.account-settings > p { font-size: 13px; line-height: 1.8; max-width: 720px; }
+.account-setting-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 15px 25px; align-items: center; border-top: 1px solid #3d2b36; padding-block: 24px; }
+.account-setting-row > .form-hint { grid-column: 1 / -1; margin: 0; }
+.account-setting-row .game-rank-card { background: #1e171e; }
+.account-setting-actions { display: flex; align-items: center; flex-direction: column; gap: 14px; }
+.account-setting-actions .button { font-size: 12px; }
+.account-setting-actions .text-link { font-size: 10px; }
+.profile-report-row { display: flex; justify-content: flex-end; margin: -10px 0 22px; }
+.report-button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 9px; color: #9b808f; border: 1px solid transparent; border-radius: 5px; font-size: 11px; }
+.report-button:hover { border-color: #68404b; color: #dc9eab; background: #3b202b40; }
+.post-top .report-button > span { display: none; }
+.post-top .report-button { padding: 4px; }
+.post-top > time { margin-left: auto; }
+.composer-publisher { margin-block: 10px 14px; }
+.composer-publisher label { display: flex; align-items: center; gap: 11px; font-size: 10px; color: #ad90a3; }
+.composer-publisher select { width: auto; max-width: 100%; font-size: 11px; min-height: 34px; padding-block: 7px; flex: 1; }
+.admin-stats { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; margin-bottom: 42px; }
+.admin-stats .panel { display: flex; flex-direction: column; gap: 16px; padding: 24px; }
+.account-type-picker { border: 0; margin: 0; padding: 0; min-width: 0; }
+.account-type-picker legend { margin-bottom: 12px; color: #dcc5d0; font-size: 13px; }
+.account-type-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.account-type-options label { display: flex; flex-direction: row; align-items: center; gap: 9px; border: 1px solid #4b3241; border-radius: 7px; padding: 14px 12px; cursor: pointer; background: #211820; }
+.account-type-options label.selected { border-color: #b76c7c; background: #3b222d; }
+.account-type-options label:focus-within { outline: 2px solid #d38b9b; outline-offset: 3px; }
+.account-type-options input[type="radio"] { width: 14px; height: 14px; min-height: 0; margin: 0; padding: 0; accent-color: #c87789; flex: 0 0 auto; }
+.account-type-options svg { color: #c98a9a; flex: 0 0 auto; }
+.account-type-options span { display: grid; gap: 6px; }
+.account-type-options strong { font-size: 12px; line-height: 1.4; }
+.account-type-options small { font-size: 10px; color: #ba9eae; line-height: 1.6; }
+.account-type-hint { margin: -4px 0 0; }
+.sponsor-sections { display: grid; gap: 30px; min-width: 0; }
+.sponsor-account-info { border-top: 1px solid #47303f; padding-top: 22px; margin-top: 24px; }
+.sponsor-account-info p { margin-bottom: 0; }
+.company-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 20px; }
+@media(max-width:480px) { .account-type-options { grid-template-columns: 1fr; } }
+.admin-stats span { font-size: 12px; color: #b49baa; }
+.admin-stats strong { font-size: 36px; line-height: 1; color: #e2b2bf; }
+.admin-cases > .filter-bar { margin: 25px 0; }
+.admin-cases .entity-section-heading { margin-bottom: 15px; }
+.admin-case-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.admin-case-card h3 { font-size: 23px; margin: 15px 0; overflow-wrap: anywhere; }
+.admin-case-count { display: flex; align-items: center; gap: 15px; margin: 23px 0; }
+.admin-case-count > strong { font-size: 41px; line-height: 1; color: #e2a7b6; }
+.admin-case-count > span { font-size: 11px; color: #ab8c9f; }
+.admin-case-card > .button { margin-top: 22px; font-size: 12px; }
+.banned-tag { color: #f0a0af; border-color: #8d3c52; background: #61273950; }
+.admin-accounts { margin-top: 45px; padding: 30px; }
+.admin-accounts .roster-row p { margin: 6px 0 0; }
+.admin-accounts .entity-section-heading { margin-bottom: 17px; }
+.admin-password-actions { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.admin-password-actions .text-link { font-size: 11px; }
+.moderation-layout { display: grid; grid-template-columns: minmax(0,1fr) 310px; gap: 28px; align-items: start; }
+.evidence-card { margin-bottom: 20px; }
+.evidence-heading, .evidence-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: space-between; }
+.evidence-reason { font-size: 14px !important; line-height: 1.9; color: #dbc1ce; margin: 22px 0; }
+.evidence-meta { font-size: 10px; color: #a18498; }
+.publication-evidence { margin-top: 22px; border: 1px solid #4b2f40; background: #21151f; padding: 20px; border-radius: 6px; }
+.publication-evidence .eyebrow { font-size: 8px; }
+.publication-evidence > strong { display: block; margin-top: 13px; font-size: 12px; color: #d2a9bc; }
+.publication-evidence blockquote { padding: 0 0 0 14px; margin: 18px 0; border-left: 2px solid #a55770; color: #c8a4b8; font-size: 13px; line-height: 1.9; }
+.publication-evidence .text-link { font-size: 10px; }
+.moderation-actions { position: sticky; top: 108px; }
+.moderation-actions > svg { color: #d08c9c; margin-bottom: 20px; }
+.moderation-actions > h2 { font-size: 26px; margin: 0 0 17px; }
+.moderation-actions > p { font-size: 12px; line-height: 1.85; }
+.moderation-actions > .button { margin-top: 15px; font-size: 12px; }
+.moderation-actions > .text-link { margin-top: 20px; font-size: 11px; }
+.moderation-actions > .form-hint { margin-top: 20px; }
+.moderation-actions > h3 { font-size: 17px; margin: 29px 0 18px; }
+.audit-entry { border-top: 1px solid #4a2f40; padding-block: 16px; }
+.audit-entry strong { font-size: 12px; color: #d3a0b5; }
+.audit-entry p { font-size: 11px; line-height: 1.8; margin: 10px 0; overflow-wrap: anywhere; }
+.audit-entry time { font-size: 9px; color: #99768f; }
+@media(max-width:1000px) {
+  .admin-case-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .moderation-layout { grid-template-columns: minmax(0,1fr) 270px; gap: 20px; }
+  .admin-stats { gap: 12px; }
+  .admin-stats .panel { padding: 20px; }
+}
+@media(max-width:700px) {
+  .game-rank-card { padding: 16px; }
+  .game-rank-heading strong { font-size: 14px; }
+  .game-rank-tags .tag { font-size: 10px; }
+  .roster-game-select { max-width: 100%; margin-left: 0; width: 100%; order: 3; font-size: 16px; }
+  .account-settings { padding: 23px; }
+  .account-settings h2 { font-size: 26px; }
+  .account-setting-row { grid-template-columns: 1fr; }
+  .account-setting-actions { flex-direction: row; justify-content: space-between; flex-wrap: wrap; }
+  .account-setting-actions .button { min-height: 40px; font-size: 11px; }
+  .admin-stats { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .admin-stats .panel { padding: 20px; gap: 14px; }
+  .admin-stats span { font-size: 11px; }
+  .admin-stats strong { font-size: 31px; }
+  .admin-case-grid { grid-template-columns: 1fr; }
+  .admin-accounts { padding: 23px; }
+  .admin-accounts .entity-section-heading .button { font-size: 11px; }
+  .moderation-layout { grid-template-columns: 1fr; }
+  .moderation-actions { position: static; }
+  .publication-evidence { padding: 16px; }
+  .evidence-meta { font-size: 9px; }
+  .publication-evidence blockquote { font-size: 12px; }
+  .evidence-reason { font-size: 13px !important; }
+  .profile-report-row { margin-top: -10px; }
+  .post-top { gap: 8px; }
+}

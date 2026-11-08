@@ -1,0 +1,86 @@
+
+name: respectplus
+
+services:
+  mongodb:
+    build:
+      context: ./mongo
+      dockerfile: Dockerfile
+    image: respectplus-mongodb:1.0
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${MONGO_PORT:-27017}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-respect_admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-respect-local-admin}
+      MONGO_INITDB_DATABASE: respectdb
+      MONGO_APP_USER: ${MONGO_APP_USER:-respect_app}
+      MONGO_APP_PASSWORD: ${MONGO_APP_PASSWORD:-respect-local-app}
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --username \"$$MONGO_INITDB_ROOT_USERNAME\" --password \"$$MONGO_INITDB_ROOT_PASSWORD\" --authenticationDatabase admin --eval 'quit(db.adminCommand({ping: 1}).ok ? 0 : 1)'"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  backend:
+    build:
+      context: ..
+      dockerfile: Docker/python/Dockerfile
+    restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8000}:8000"
+    environment:
+      MONGO_HOST: mongodb
+      MONGO_USER: ${MONGO_APP_USER:-respect_app}
+      MONGO_PASSWORD: ${MONGO_APP_PASSWORD:-respect-local-app}
+      MONGO_DATABASE: respectdb
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      BOOTSTRAP_ADMIN_USERNAME: ${BOOTSTRAP_ADMIN_USERNAME:-admin}
+      BOOTSTRAP_ADMIN_EMAIL: ${BOOTSTRAP_ADMIN_EMAIL:-admin@respect.local}
+      BOOTSTRAP_ADMIN_PASSWORD: ${BOOTSTRAP_ADMIN_PASSWORD:-}
+      RIOT_API_KEY: ${RIOT_API_KEY:-}
+      HENRIK_API_KEY: ${HENRIK_API_KEY:-}
+      FACEIT_API_KEY: ${FACEIT_API_KEY:-}
+      STEAM_WEB_API_KEY: ${STEAM_WEB_API_KEY:-}
+      FORTNITE_API_KEY: ${FORTNITE_API_KEY:-}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=4)"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: Docker/frontend/Dockerfile
+    restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-3000}:3000"
+    environment:
+      BACKEND_URL: http://backend:8000
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: "1"
+      HOSTNAME: "0.0.0.0"
+      PORT: "3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:3000/', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+
+volumes:
+  mongo_data:

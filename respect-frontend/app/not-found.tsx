@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound() { return <main id="contenido" className="container page-content signed-out"><span className="eyebrow">ERROR 404 / FUERA DEL MAPA</span><h1>Esta partida <span className="muted-text">no existe.</span></h1><p>Vuelve al lobby para encontrar tu siguiente destino.</p><Link href="/" className="button primary">Volver al inicio →</Link></main>; }
